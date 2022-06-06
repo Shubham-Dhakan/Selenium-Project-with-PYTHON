@@ -7,4 +7,5 @@ Performed automatic execution in Chrome Web browser through Selenium Webdriver w
 4) Performed DRAG&DROP, double click operations using ActionChains class
 5) Implemented IMPLICIT WAIT concept for better synchronization between webelements and selenium test script 
 6) Executed WINDOW HANDLES concept to get current browser ID
-7) Identified and operated FRAME concept.
+7) Identified and operated FRAME concept
+8) 8) Locating WebElements through XPATH locator concept
