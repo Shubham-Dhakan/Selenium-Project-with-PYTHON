@@ -96,13 +96,25 @@ public class TestingDemoWebsite {
 		// Multiple Window Handles
 		WebElement search = driver.findElement(By.xpath("//input[@id='Wikipedia1_wikipedia-search-input']"));
 		search.sendKeys("selenium");
+		driver.findElement(By.xpath("//input[@class='wikipedia-search-button']")).click();
 		
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Selenium")));
 		
-		
-		/*
-		int links = driver.findElements(By.xpath("//div[@id='wikipedia-search-result-link]")).size();
-		System.out.println(links);
-		*/
+		List <WebElement> links = driver.findElements(By.xpath("//div[@id='wikipedia-search-result-link']/a"));
+		System.out.println(links.size());
+		//Thread.sleep(5000);
+		for (int i=0;i<links.size();i++) {
+			
+			links.get(i).click();
+			}
+	
+		Set<String> handles = driver.getWindowHandles();
+		Iterator <String> it = handles.iterator();
+		while(it.hasNext()) {								// While loop works as boolean function (true/false) - if condition is true it will enter
+			driver.switchTo().window(it.next());			// the loop or else will come outside right away
+			System.out.println(driver.getTitle());
+		}
 		
 		// Frame Concept
 		driver.switchTo().frame(0);									// Switch to frame by index no
